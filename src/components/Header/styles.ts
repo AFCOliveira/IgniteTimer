@@ -11,12 +11,12 @@ export const HeaderContainer = styled.header`
   }
 
   a {
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
 
     display: flex;
     justify-content: center;
-    align-self: center;
+    align-items: center;
 
     color: ${(props) => props.theme['gray-100']};
 
