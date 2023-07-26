@@ -5,6 +5,19 @@ export const HistoryContainer = styled.main`
   padding: 3.5rem;
   display: flex;
   flex-direction: column;
+  overflow: auto;
+
+  ::-webkit-scrollbar {
+    background-color: ${(props) => props.theme['gray-600']};
+    width: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme['green-500']};
+    border-radius: 5px;
+  }
 
   h1 {
     font-size: 1.5rem;
@@ -14,13 +27,13 @@ export const HistoryContainer = styled.main`
 
 export const HistoryList = styled.div`
   flex: 1;
-  overflow: auto;
   margin-top: 2rem;
 
   table {
     width: 100%;
     border-collapse: collapse;
     min-width: 600px;
+    overflow: auto;
 
     th {
       background-color: ${(props) => props.theme['gray-600']};
@@ -61,7 +74,7 @@ const STATUS_COLORS = {
   yellow: 'yellow-500',
   green: 'green-500',
   red: 'red-500',
-}
+} as const
 
 interface StatusProps {
   statusColor: keyof typeof STATUS_COLORS

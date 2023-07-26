@@ -27,16 +27,16 @@ interface CyclesContextType {
   markCurrentCycleAsFinished: () => void
   setSecondsPassed: (seconds: number) => void
   createNewCycle: (data: CreateCycleData) => void
-  interrupterCurrentCycle: () => void
+  interruptCurrentCycle: () => void
 }
 
 export const CyclesContext = createContext({} as CyclesContextType)
 
-interface CycleContextProviderProps {
+interface CyclesContextProviderProps {
   children: ReactNode
 }
 
-export function CycleContextProvider({ children }: CycleContextProviderProps) {
+export function CycleContextProvider({ children }: CyclesContextProviderProps) {
   const [cyclesState, dispatch] = useReducer(
     cyclesReducer,
     {
@@ -44,11 +44,11 @@ export function CycleContextProvider({ children }: CycleContextProviderProps) {
       activeCycleId: null,
     },
     (initialState) => {
-      const strorageStateAsJSON = localStorage.getItem(
+      const stroredStateAsJSON = localStorage.getItem(
         '@ignite-timer:cycles-state-1.0.0',
       )
-      if (strorageStateAsJSON) {
-        return JSON.parse(strorageStateAsJSON)
+      if (stroredStateAsJSON) {
+        return JSON.parse(stroredStateAsJSON)
       }
       return initialState
     },
@@ -90,7 +90,7 @@ export function CycleContextProvider({ children }: CycleContextProviderProps) {
     setAmountSecondsPassed(0)
   }
 
-  function interrupterCurrentCycle() {
+  function interruptCurrentCycle() {
     dispatch(interruptCurrentCycleAction())
   }
 
@@ -104,7 +104,7 @@ export function CycleContextProvider({ children }: CycleContextProviderProps) {
         amountSecondsPassed,
         setSecondsPassed,
         createNewCycle,
-        interrupterCurrentCycle,
+        interruptCurrentCycle,
       }}
     >
       {children}

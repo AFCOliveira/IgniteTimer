@@ -55,7 +55,7 @@ export function Countdown() {
     if (activeCycle) {
       document.title = `${minutes}:${seconds}`
     }
-  }, [minutes, seconds, activeCycle, markCurrentCycleAsFinished])
+  }, [minutes, seconds, activeCycle])
 
   return (
     <CountdownContainer>

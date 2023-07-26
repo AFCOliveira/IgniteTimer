@@ -10,13 +10,13 @@ export interface Cycle {
   finishedDate?: Date
 }
 
-interface CycleState {
+interface CyclesState {
   cycles: Cycle[]
   activeCycleId: string | null
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function cyclesReducer(state: CycleState, action: any) {
+export function cyclesReducer(state: CyclesState, action: any) {
   switch (action.type) {
     case ActionTypes.ADD_NEW_CYCLE:
       return produce(state, (draft) => {
@@ -28,7 +28,7 @@ export function cyclesReducer(state: CycleState, action: any) {
         return cycle.id === state.activeCycleId
       })
 
-      if (currentCycleIndex < 1) {
+      if (currentCycleIndex < 0) {
         return state
       }
 
@@ -42,7 +42,7 @@ export function cyclesReducer(state: CycleState, action: any) {
         return cycle.id === state.activeCycleId
       })
 
-      if (currentCycleIndex < 1) {
+      if (currentCycleIndex < 0) {
         return state
       }
 
