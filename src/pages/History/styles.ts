@@ -5,19 +5,7 @@ export const HistoryContainer = styled.main`
   padding: 3.5rem;
   display: flex;
   flex-direction: column;
-  overflow: auto;
-
-  ::-webkit-scrollbar {
-    background-color: ${(props) => props.theme['gray-600']};
-    width: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: ${(props) => props.theme['green-500']};
-    border-radius: 5px;
-  }
+  overflow: hidden;
 
   h1 {
     font-size: 1.5rem;
@@ -28,6 +16,20 @@ export const HistoryContainer = styled.main`
 export const HistoryList = styled.div`
   flex: 1;
   margin-top: 2rem;
+  max-height: 100%;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    background-color: ${(props) => props.theme['gray-600']};
+    width: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme['green-700']};
+    border-radius: 5px;
+  }
 
   table {
     width: 100%;
